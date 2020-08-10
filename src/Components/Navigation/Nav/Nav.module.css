@@ -1,0 +1,12 @@
+.svg {
+    width: 40px;
+    display: inline;
+
+}
+
+.navigationItems {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    list-style: none;
+}
