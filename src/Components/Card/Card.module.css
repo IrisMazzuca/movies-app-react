@@ -1,0 +1,27 @@
+.container {
+    width: 20%;
+    padding: 1rem;
+}
+
+.img {
+    transition: all 0.3s ease 0s, height 0s ease 0s;
+    margin-bottom: 1rem;
+}
+
+.img:hover {
+    position: relative;
+    height: auto;
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.title {
+    color: rgb(220, 221, 222);
+    font-size: 1.5rem;
+    font-weight: 300;
+
+}

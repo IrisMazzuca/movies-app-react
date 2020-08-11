@@ -5,10 +5,10 @@ import classes from './Header.module.css'
 
 const Header = () => {
     return (
-        <div className={classes.container}>
+        <header className={classes.container}>
             <Nav />
             <Search />
-        </div>
+        </header>
     )
 }
 

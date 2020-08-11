@@ -5,7 +5,8 @@ import Movies from './Routes/Movies/Movies';
 import Tv from './Routes/Tv/Tv';
 import Error from './Routes/Error/Error';
 import Home from './Routes/Home/Home';
-import CategoryPage from './Components/Pages/CategoryPage/CategoryPage';
+import CategoryPage from './Components/CategoryPage/CategoryPage';
+import './App.css'
 
 function App() {
   return (

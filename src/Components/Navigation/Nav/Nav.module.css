@@ -1,12 +1,29 @@
-.svg {
-    width: 40px;
-    display: inline;
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    overflow: hidden;
+}
+
+.li {
+    display: list-item;
+    text-align: -webkit-match-parent;
 
 }
 
-.navigationItems {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    list-style: none;
+.link {
+    color: rgb(220, 221, 222);
+    margin: auto 1.5rem;
+}
+
+.link:active,
+.link:focus {
+    color: rgb(33, 150, 243);
+}
+
+.svg {
+    width: 2.5rem;
+    display: inline-block;
 }

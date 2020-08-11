@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import Axios from 'axios';
-import Card from '../../Card/Card';
+import Card from '../Card/Card';
 import Loader from 'react-loader-spinner';
 
 const CategoryPage = () => {

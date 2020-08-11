@@ -1,8 +1,7 @@
 .container {
-    width: 100%;
+    width: 40%;
     height: 70px;
-    background-color: grey;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
 }

@@ -33,7 +33,7 @@ const Preview = ({ media, query }) => {
     const moviesSlice = (movies && movies.results.slice(0, 5))
 
     return (
-        <div>
+        <div className={classes.container}>
             {
                 moviesSlice && moviesSlice.map(movie => (<Card img={movie.poster_path} name={movie.original_title} id={movie.id} />))
             }
