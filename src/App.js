@@ -7,6 +7,7 @@ import Error from './Routes/Error/Error';
 import Home from './Routes/Home/Home';
 import CategoryPage from './Components/CategoryPage/CategoryPage';
 import './App.css'
+import Info from './Components/Info/Info';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/:media/:query/page/:page">
             <CategoryPage />
+          </Route>
+          <Route path="/:media/:id/">
+            <Info />
           </Route>
           <Route exact path="/error">
             <Error />

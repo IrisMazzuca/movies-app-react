@@ -1,43 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Card from '../Card/Card'
 import classes from './Preview.module.css'
-import Axios from 'axios'
+import { useSearch } from '../../Utils/hooks/useSearch'
+import Loader from 'react-loader-spinner'
 
-const Preview = ({ media, query }) => {
+const Preview = ({ media, category }) => {
 
-    const [movies, setMovies] = useState(null)
-    const [isError, setIsError] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
+    const [data, isLoading, isError] = useSearch(media, category);
 
-    useEffect(() => {
-
-        setIsLoading(true);
-        setIsError(false);
-
-        Axios
-
-            .get(`https://api.themoviedb.org/3/${media}/${query}?api_key=00f0191d7bcf9029e316b0913d3846a9&page=1`)
-
-            .then((response) => {
-                console.log(response.data);
-                setMovies(response.data);
-                setIsLoading(false);
-            })
-
-            .catch(() => {
-                setIsLoading(false);
-                setIsError(true);
-            });
-    }, []);
-
-    const moviesSlice = (movies && movies.results.slice(0, 5))
+    const moviesSlice = (data && data.results.slice(0, 5))
 
     return (
-        <div className={classes.container}>
+        <>
+            {isError && (
+                <div className="alert-danger" role="alert">
+                    Error 404: Not Found.
+                    API error: There was an error please refresh the page and try again.
+                </div>
+            )}
+
             {
-                moviesSlice && moviesSlice.map(movie => (<Card img={movie.poster_path} name={movie.original_title} id={movie.id} />))
+                isLoading && (
+                    <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
+                )
             }
-        </div>
+
+            {
+                data && !isError && !isLoading && (
+                    <div className={classes.container}>
+                        {
+                            moviesSlice && moviesSlice.map(movie => (<Card media={media} img={movie.poster_path} name={movie.original_title} id={movie.id} />))
+                        }
+                    </div>
+                )}
+        </>
     )
 }
 
