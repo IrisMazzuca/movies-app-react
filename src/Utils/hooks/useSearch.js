@@ -3,10 +3,11 @@
 const { useGet } = require("./useGet");
 const { URL_BASE } = require("../../Constants/api");
 
-export const useSearch = (media, search, page = 1) => {
+export const useSearch = (media, search, credits = false, page = 1) => {
   const endpoints = {
     trending: `trending/${media}/week`,
     category: `${media}/${search}`,
+    credits: `${media}/${search}/credits`,
     search: "search/multi",
   };
   //trending top_rated on_the_air
@@ -17,6 +18,8 @@ export const useSearch = (media, search, page = 1) => {
   let endpoint;
   if (media === "multi") {
     endpoint = endpoints.search;
+  } else if (credits) {
+    endpoint = endpoints.credits
   } else {
     endpoint = endpoints[search] ? endpoints[search] : endpoints.category;
   }

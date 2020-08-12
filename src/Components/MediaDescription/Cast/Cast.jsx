@@ -1,18 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
-import Card from '../Card/Card';
+import { useSearch } from '../../../Utils/hooks/useSearch';
 import Loader from 'react-loader-spinner';
-import { useTitle } from "../../Utils/hooks/useTitle";
-import { useSearch } from '../../Utils/hooks/useSearch';
-import classes from './CategoryPage.module.css'
+import Card from '../../Card/Card';
+import classes from './Cast.module.css'
 
-const CategoryPage = () => {
+const Cast = ({ media, id }) => {
 
-    const { media, query, page } = useParams()
-    const title = useTitle(media, query);
-    const [data, isLoading, isError] = useSearch(media, query, page);
-
-    // console.log('aca', media, query, page)
+    const [data, isLoading, isError] = useSearch(media, id, true);
 
     return (
         <>
@@ -29,16 +23,15 @@ const CategoryPage = () => {
 
             {data && !isError && !isLoading && (
                 <div className={classes.container}>
-                    <h2 className={classes.title}>{title}</h2>
+
                     <div className={classes.cardsContainer}>
-                        {data.results.map(movie => (<Card media={media} img={movie.poster_path} name={movie.original_title} id={movie.id} />))}
+                        {data.cast.map(character => (<Card media={media} img={character.profile_path} name={character.name} character={character.character} id={character.id} />))}
                     </div>
                 </div>
             )}
 
         </>
     )
-
 }
 
-export default CategoryPage
+export default Cast

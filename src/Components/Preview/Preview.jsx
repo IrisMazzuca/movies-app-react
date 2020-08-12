@@ -9,7 +9,7 @@ const Preview = ({ media, category }) => {
     const [data, isLoading, isError] = useSearch(media, category);
 
     const moviesSlice = (data && data.results.slice(0, 5))
-
+    console.log(moviesSlice)
     return (
         <>
             {isError && (
@@ -29,7 +29,7 @@ const Preview = ({ media, category }) => {
                 data && !isError && !isLoading && (
                     <div className={classes.container}>
                         {
-                            moviesSlice && moviesSlice.map(movie => (<Card media={media} img={movie.poster_path} name={movie.original_title} id={movie.id} />))
+                            moviesSlice && moviesSlice.map(movie => (<Card media={media} img={movie.poster_path} name={movie.title ? movie.title : movie.name} id={movie.id} />))
                         }
                     </div>
                 )}
