@@ -1,10 +1,11 @@
-.container {
-    width: 20%;
+/* .container {} */
+
+.figure {
     padding: 1rem;
 }
 
 .img {
-    transition: all 0.3s ease 0s, height 0s ease 0s;
+    transition: all 0.3s ease 0s;
     margin-bottom: 1rem;
 }
 
@@ -17,11 +18,20 @@
 
 .link {
     text-decoration: none;
+
 }
 
 .title {
+
     color: rgb(220, 221, 222);
     font-size: 1.5rem;
+    font-weight: 300;
+    padding-top: .5rem;
+}
+
+.subtitle {
+    color: rgb(220, 221, 222);
+    font-size: 1.2rem;
     font-weight: 300;
     padding-top: .5rem;
 }

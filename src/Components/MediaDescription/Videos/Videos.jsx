@@ -1,5 +1,7 @@
 import React from 'react'
 import { useSearch } from '../../../Utils/hooks/useSearch';
+import classes from './Videos.module.css'
+import Loader from 'react-loader-spinner';
 
 const Videos = ({ media, id }) => {
 
@@ -8,12 +10,30 @@ const Videos = ({ media, id }) => {
     console.log("videos", data)
 
     return (
-        data && data.results.map(video => (
-            <iframe width="420" height="315"
-                src={`https://www.youtube.com/embed/${video.key}`}>
-            </iframe>
+        <>
+            {isError && (
+                <div className="alert-danger" role="alert">
+                    Error 404: Not Found.
+                    API error: There was an error please refresh the page and try again.
+                </div>
+            )}
 
-        ))
+            {isLoading && (
+                <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
+            )}
+
+            {data && !isError && !isLoading && (
+                <div>
+                    {(data.results.length === 0) && <h1 className={classes.title}>No se encontraron videos</h1>}
+
+                    {data.results.map(video => (
+                        <iframe className={classes.video}
+                            src={`https://www.youtube.com/embed/${video.key}`}>
+                        </iframe>
+                    ))}
+                </div>
+            )}
+        </>
     )
 }
 

@@ -6,12 +6,12 @@ const Card = ({ media, img, name, id, width = 'w342', character }) => {
     return (
         <div className={classes.container}>
             <Link to={`/${media}/${id}/info`} className={classes.link}>
-                <figure>
+                <figure className={classes.figure}>
                     <img src={`http://image.tmdb.org/t/p/${width}${img}`} alt={name} className={classes.img} />
                     <figcaption className={classes.title}>
                         {name}
                     </figcaption>
-                    {(character) && <p>{character}</p>}
+                    {(character) && <p className={classes.subtitle}>{character}</p>}
                 </figure>
             </Link>
         </div>

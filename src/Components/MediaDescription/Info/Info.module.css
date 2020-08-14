@@ -29,6 +29,12 @@ li {
 
 .genres {
     padding-right: 1rem;
+    color: rgb(33, 150, 243);
+}
+
+.genres:hover {
+    cursor: pointer;
+    color: rgb(25, 116, 190);
 }
 
 .companies {

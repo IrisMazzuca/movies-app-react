@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSearch } from '../../../Utils/hooks/useSearch';
 import EpisodeCard from './EpisodeCard';
+import classes from './Seasons.module.css'
+
 const createOptions = (num) => {
     const optionsArr = []
 
@@ -27,23 +29,22 @@ const Seasons = ({ seasonsNum, media, id }) => {
 
 
 
-
-
     const [data, isLoading, isError] = useSearch(media, id, 1, "season/1");
 
     console.log("seasons", data)
 
     return (
         <div>
-            <select name="Temporada" >
+            <select name="Temporada" className={classes.select} >
                 {options}
             </select>
+            <div className={classes.cardsContainer}>
+                {data && data.episodes.map(episode => (
 
-            {data && data.episodes.map(episode => (
-
-                <EpisodeCard img={episode.still_path} number={episode.episode_number} name={episode.name} overview={episode.overview} />
-            ))
-            }
+                    <EpisodeCard img={episode.still_path} number={episode.episode_number} name={episode.name} overview={episode.overview} />
+                ))
+                }
+            </div>
         </div>
     )
 }
