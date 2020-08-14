@@ -1,61 +1,74 @@
 import React from 'react'
 import classes from './Info.module.css'
-import Stars from '../../Stars/Stars'
-import {
-    FaInstagram,
-    FaTwitter,
-    FaLink,
-    FaImdb,
-    FaFacebookSquare,
-} from 'react-icons/fa';
+import Stars from '../Stars/Stars'
+import SocialMedia from './SocialMedia/SocialMedia'
 
 
-const Info = ({ data }) => {
+
+const Info = ({ data, media }) => {
+    // console.log('data', data)
 
     return (
 
-        <div>
+        <div className={classes.container}>
+            <img src={`https://image.tmdb.org/t/p/w342${data.poster_path}`} alt="" className={classes.img} />
             <div>
-                <img src={`https://image.tmdb.org/t/p/w342${data.poster_path}`} alt="" />
-                <div>
-                    <h2>{data.original_title}</h2>
+                <h1 className={classes.title}>{(data.original_title) ? data.original_title : data.name}</h1>
 
-                    <Stars number={Math.ceil(data.vote_average)} />
+                <Stars number={Math.ceil(data.vote_average)} />
 
-                    <p>{data.overview}</p>
+                <p className={classes.overview}>{data.overview}</p>
 
+                {(media === 'movie') && (
                     <ul>
-                        <li>Duración: {data.runtime}</li>
+                        <li>Duración: {data.runtime} min.</li>
+
+                        <li >
+                            Generos: {data.genres.map(genre => (
+                            <span className={classes.genres}>{genre.name}</span>
+                        ))}
+                        </li>
+
+                        <li>Presupuesto: ${data.budget}</li>
+
+                        <li>Recaudación: ${data.revenue}</li>
+
+                        <li >
+                            Producción: {data.production_companies.map(company => (
+                            <span className={classes.companies}>{company.name}</span>
+                        ))}
+                        </li>
+                    </ul>
+                )}
+
+                {(media === 'tv') && (
+                    <ul>
+                        <li>Temporadas: {data.number_of_seasons}</li>
+
+                        <li>Episodios: {data.number_of_episodes}</li>
+
+                        <li>Duración: {data.episode_run_time} min.</li>
 
                         <li>
                             Generos: {data.genres.map(genre => (
-                            <p>{genre.name}</p>
+                            <span className={classes.genres}>{genre.name}</span>
                         ))}
                         </li>
 
-                        <li>Presupuesto: {data.budget}</li>
-
-                        <li>Recaudación: {data.revenue}</li>
-
-                        <li>
+                        <li >
                             Producción: {data.production_companies.map(company => (
-                            <p>{company.name}</p>
+                            <span className={classes.companies}>{company.name}</span>
                         ))}
                         </li>
-
                     </ul>
+                )}
 
-                    <div>
-                        <FaInstagram />
-                        <FaTwitter />
-                        <FaLink />
-                        <FaImdb />
-                        <FaFacebookSquare />
 
-                    </div>
-                </div>
+                <SocialMedia media={media} id={data.id} homepage={data.homepage} />
+
             </div>
         </div>
+
     )
 }
 

@@ -6,7 +6,7 @@ import classes from './Cast.module.css'
 
 const Cast = ({ media, id }) => {
 
-    const [data, isLoading, isError] = useSearch(media, id, true);
+    const [data, isLoading, isError] = useSearch(media, id, 1, "credits");
 
     return (
         <>

@@ -19,7 +19,7 @@ const MediaDescription = () => {
     return (
         <div>
             {data && (
-                <>
+                <div className={classes.container}>
                     <div className={classes.imgContainer}>
                         <div className={classes.imgShadow}></div>
                         <div style={{ background: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`, backgroundSize: 'cover', backgroundPosition: 'center center' }} className={classes.img}></div>
@@ -36,21 +36,17 @@ const MediaDescription = () => {
                     </div>
 
                     <Switch>
-                        <Route exact path={`/${media}/${id}/info`}><Info data={data} /></Route>
+                        <Route exact path={`/${media}/${id}/info`}><Info data={data} media={media} /></Route>
                         <Route exact path={`/${media}/${id}/cast`}><Cast data={data} media={media} id={id} /></Route>
                         {(media === 'movie')
-                            ? <Route exact path={`/${media}/${id}/videos`}><Videos data={data} /></Route>
-                            : <Route exact path={`/${media}/${id}/seasons`}><Seasons data={data} /></Route>
+                            ? <Route exact path={`/${media}/${id}/videos`}><Videos data={data} media={media} id={id} /></Route>
+                            : <Route exact path={`/${media}/${id}/seasons`}><Seasons seasonsNum={data.number_of_seasons} media={media} id={id} /></Route>
                         }
-                        <Route exact path={`/${media}/${id}/similar`}><Similar data={data} /></Route>
+                        <Route exact path={`/${media}/${id}/similar`}><Similar data={data} media={media} id={id} /></Route>
 
                     </Switch>
-                </>
+                </div>
             )}
-
-
-
-
 
         </div>
     )

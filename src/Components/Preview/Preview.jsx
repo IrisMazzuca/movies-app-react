@@ -9,7 +9,7 @@ const Preview = ({ media, category }) => {
     const [data, isLoading, isError] = useSearch(media, category);
 
     const moviesSlice = (data && data.results.slice(0, 5))
-    console.log(moviesSlice)
+    // console.log(moviesSlice)
     return (
         <>
             {isError && (

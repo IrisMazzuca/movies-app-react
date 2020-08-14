@@ -2,6 +2,7 @@ import React from 'react'
 import { BsStarFill } from 'react-icons/bs';
 import { BsStarHalf } from 'react-icons/bs';
 import { BsStar } from 'react-icons/bs';
+import classes from './Stars.module.css'
 
 const ICONS = [<BsStarFill />, <BsStarHalf />, <BsStar />]
 
@@ -22,7 +23,7 @@ const renderIcons = (number) => {
 const Stars = ({ number }) => {
 
     return (
-        <div className="container">
+        <div className={classes.container}>
             {renderIcons(number)}
         </div>
     )

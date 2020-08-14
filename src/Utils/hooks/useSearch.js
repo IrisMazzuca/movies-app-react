@@ -3,11 +3,11 @@
 const { useGet } = require("./useGet");
 const { URL_BASE } = require("../../Constants/api");
 
-export const useSearch = (media, search, credits = false, page = 1) => {
+export const useSearch = (media, search, page = 1, subsearch = false) => {
   const endpoints = {
     trending: `trending/${media}/week`,
     category: `${media}/${search}`,
-    credits: `${media}/${search}/credits`,
+    subsearch: `${media}/${search}/${subsearch}`,
     search: "search/multi",
   };
   //trending top_rated on_the_air
@@ -18,8 +18,8 @@ export const useSearch = (media, search, credits = false, page = 1) => {
   let endpoint;
   if (media === "multi") {
     endpoint = endpoints.search;
-  } else if (credits) {
-    endpoint = endpoints.credits
+  } else if (subsearch) {
+    endpoint = endpoints.subsearch
   } else {
     endpoint = endpoints[search] ? endpoints[search] : endpoints.category;
   }
@@ -27,6 +27,6 @@ export const useSearch = (media, search, credits = false, page = 1) => {
   //query=asd
 
   return useGet(
-    `${URL_BASE}/${endpoint}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}${query}`
+    `${URL_BASE}/${endpoint}?api_key=${process.env.REACT_APP_API_KEY}&page=${page}${query}&language=es-ES`
   );
 };
