@@ -24,7 +24,7 @@ const Cast = ({ media, id }) => {
             {data && !isError && !isLoading && (
 
                 <div className={classes.cardsContainer}>
-                    {data.cast.map(character => (<Card media={media} img={character.profile_path} name={character.name} character={character.character} id={character.id} />))}
+                    {data.cast.map(character => (<Card media='person' img={character.profile_path} name={character.name} character={character.character} id={character.id} />))}
                 </div>
 
             )}

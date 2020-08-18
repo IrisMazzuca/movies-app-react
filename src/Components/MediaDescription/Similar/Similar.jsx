@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Loader from 'react-loader-spinner';
 import Card from '../../Card/Card';
 import { useSearch } from '../../../Utils/hooks/useSearch';
 import classes from './Similar.module.css'
 
-const Similar = ({ media, id }) => {
+const Similar = ({ media, id, search = 'similar' }) => {
 
-    const [data, isLoading, isError] = useSearch(media, id, 1, "similar");
+    const type = search === 'combined_credits' ? 'cast' : 'results'
+
+
+    const [data, isLoading, isError] = useSearch(media, id, 1, search)
+
 
     return (
         <>
@@ -21,12 +25,12 @@ const Similar = ({ media, id }) => {
                 <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
             )}
 
-            {data && !isError && !isLoading && (
+            {data && data[type] && !isError && !isLoading && (
                 <div>
-                    {(data.results.length === 0) && <h1 className={classes.title}>No se encontraron similares</h1>}
+                    {(data[type].length === 0) && <h1 className={classes.title}>No se encontraron similares</h1>}
 
                     <div className={classes.cardsContainer}>
-                        {data.results.map(item => (<Card media={media} img={item.poster_path} name={(item.title ? item.title : item.name)} id={item.id} />))}
+                        {data[type].map(item => (<Card media={media} img={item.poster_path} name={(item.title ? item.title : item.name)} id={item.id} />))}
                     </div>
 
                 </div>

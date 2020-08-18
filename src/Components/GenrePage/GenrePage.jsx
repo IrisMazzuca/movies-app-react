@@ -4,16 +4,16 @@ import Card from '../Card/Card';
 import Loader from 'react-loader-spinner';
 import { useTitle } from "../../Utils/hooks/useTitle";
 import { useSearch } from '../../Utils/hooks/useSearch';
-import classes from './CategoryPage.module.css'
+import classes from './GenrePage.module.css'
 import Paginator from '../Navigation/Paginator/Paginator';
 
-const CategoryPage = () => {
+const GenrePage = () => {
 
-    const { media, query, page } = useParams()
-    const title = useTitle(media, query);
-    const [data, isLoading, isError] = useSearch(media, query, page);
+    const { media, genre, page, id } = useParams()
+    const title = useTitle('Género', genre);
+    const [data, isLoading, isError] = useSearch(media, genre, page, false, id);
 
-    // console.log('aca', media, query, page)
+    (data && console.log('aca', genre))
 
     return (
         <>
@@ -34,12 +34,12 @@ const CategoryPage = () => {
                     <div className={classes.cardsContainer}>
                         {data.results.map(movie => (
                             <Card
-                                media={media === "multi" ? movie.media_type : media}
+                                media={media}
                                 img={movie.poster_path}
                                 name={movie.original_title}
                                 id={movie.id} />))}
                     </div>
-                    <Paginator url={`/${media}/${query}/page/`} page={page} totalPage={data.total_pages} />
+                    <Paginator url={`${media}/${genre}/${id}/page/`} page={page} totalPage={data.total_pages} />
                 </div>
             )}
 
@@ -48,4 +48,4 @@ const CategoryPage = () => {
 
 }
 
-export default CategoryPage
+export default GenrePage

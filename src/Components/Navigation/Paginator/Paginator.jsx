@@ -25,10 +25,10 @@ const getItems = (current, totalPage, getUrl) => {
     return aux;
 };
 
-const Paginator = ({ media, category, page, totalPage }) => {
+const Paginator = ({ url, page, totalPage }) => {
 
     const getUrl = (numPage) => {
-        return `/${media}/${category}/page/${numPage}`;
+        return `/${url}${numPage}`;
     };
 
     const before = page > 1 ? getUrl(Number(page) - 1) : null;

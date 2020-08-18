@@ -8,6 +8,8 @@ import Home from './Routes/Home/Home';
 import CategoryPage from './Components/CategoryPage/CategoryPage';
 import './App.css'
 import MediaDescription from './Components/MediaDescription/MediaDescription';
+import Person from './Routes/Person/Person';
+import Genres from './Routes/Genres/Genres';
 
 function App() {
   return (
@@ -34,6 +36,14 @@ function App() {
 
           <Route exact path="/:media/:query/page/:page">
             <CategoryPage />
+          </Route>
+
+          <Route path="/person/:id/">
+            <Person />
+          </Route>
+
+          <Route exact path="/:media/:genre/:id/page/:page">
+            <Genres />
           </Route>
 
           <Route path="/:media/:id/">

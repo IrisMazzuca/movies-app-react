@@ -2,6 +2,7 @@ import React from 'react'
 import classes from './Info.module.css'
 import Stars from '../Stars/Stars'
 import SocialMedia from './SocialMedia/SocialMedia'
+import { Link } from 'react-router-dom'
 
 
 
@@ -25,7 +26,11 @@ const Info = ({ data, media }) => {
 
                         <li >
                             Generos: {data.genres.map(genre => (
-                            <span className={classes.genres}>{genre.name}</span>
+                            <Link
+                                to={`/movie/${genre.name}/${genre.id}/page/1`}
+                                className={classes.genres}>
+                                {genre.name}
+                            </Link>
                         ))}
                         </li>
 
@@ -51,7 +56,11 @@ const Info = ({ data, media }) => {
 
                         <li>
                             Generos: {data.genres.map(genre => (
-                            <span className={classes.genres}>{genre.name}</span>
+                            <Link
+                                to={`/tv/${genre.name}/${genre.id}/page/1`}
+                                className={classes.genres}>
+                                {genre.name}
+                            </Link>
                         ))}
                         </li>
 
