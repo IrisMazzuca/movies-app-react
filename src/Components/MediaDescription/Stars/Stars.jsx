@@ -12,10 +12,11 @@ const renderIcons = (number) => {
 
     const isOdd = number % 2;
     const fullIcons = (number - isOdd) / 2
-    const fullIconsArr = [...new Array(fullIcons)].map(() => ICONS[0])
+    const fullIconsArr = number && [...new Array(fullIcons)].map(() => ICONS[0])
     const halfIcons = isOdd ? ICONS[1] : null;
+    console.log({ totalIcons, fullIconsArr, icons, isOdd, fullIcons, number })
     const emptyIconsArr = [...new Array(totalIcons - fullIcons - isOdd)].map(() => ICONS[2])
-    icons = [...fullIconsArr, halfIcons, ...emptyIconsArr]
+    icons = (number === 0) ? [...emptyIconsArr] : [...fullIconsArr, halfIcons, ...emptyIconsArr]
 
     return icons
 }
@@ -23,10 +24,12 @@ const renderIcons = (number) => {
 const Stars = ({ number }) => {
 
     return (
+
         <div className={classes.container}>
-            {renderIcons(number)}
+            {renderIcons((number))}
         </div>
     )
+
 }
 
 export default Stars;

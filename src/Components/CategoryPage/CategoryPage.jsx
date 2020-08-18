@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner';
 import { useTitle } from "../../Utils/hooks/useTitle";
 import { useSearch } from '../../Utils/hooks/useSearch';
 import classes from './CategoryPage.module.css'
+import Paginator from '../Navigation/Paginator/Paginator';
 
 const CategoryPage = () => {
 
@@ -31,8 +32,14 @@ const CategoryPage = () => {
                 <div className={classes.container}>
                     <h2 className={classes.title}>{title}</h2>
                     <div className={classes.cardsContainer}>
-                        {data.results.map(movie => (<Card media={media} img={movie.poster_path} name={movie.original_title} id={movie.id} />))}
+                        {data.results.map(movie => (
+                            <Card
+                                media={media === "multi" ? movie.media_type : media}
+                                img={movie.poster_path}
+                                name={movie.original_title}
+                                id={movie.id} />))}
                     </div>
+                    <Paginator media={media} category={query} page={page} totalPage={data.total_pages} />
                 </div>
             )}
 

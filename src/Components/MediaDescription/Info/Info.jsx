@@ -6,12 +6,12 @@ import SocialMedia from './SocialMedia/SocialMedia'
 
 
 const Info = ({ data, media }) => {
-    // console.log('data', data)
 
     return (
 
         <div className={classes.container}>
             <img src={`https://image.tmdb.org/t/p/w342${data.poster_path}`} alt="" className={classes.img} />
+
             <div>
                 <h1 className={classes.title}>{(data.original_title) ? data.original_title : data.name}</h1>
 
@@ -70,6 +70,7 @@ const Info = ({ data, media }) => {
         </div>
 
     )
+
 }
 
 export default Info

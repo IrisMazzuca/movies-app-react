@@ -15,27 +15,23 @@ const createOptions = (num) => {
 
 const Seasons = ({ seasonsNum, media, id }) => {
 
-    const [num, setNum] = useState(1);
+    const [seasons, setSeasons] = useState('season/1');
     const [options, setOptions] = useState([]);
     useEffect(() => {
         setOptions(createOptions(seasonsNum));
     }, [seasonsNum])
-    let seasons;
-
-    // const handleSeasons = () => {
-    //     setNum()
-    //     seasons = `seasons/${num}`;
-    // }
 
 
 
-    const [data, isLoading, isError] = useSearch(media, id, 1, "season/1");
+    const [data, isLoading, isError] = useSearch(media, id, 1, seasons);
 
-    console.log("seasons", data)
 
     return (
         <div>
-            <select name="Temporada" className={classes.select} >
+            <select name="Temporada" className={classes.select}
+                onChange={(e) => {
+                    setSeasons(`season/${e.target.value}`)
+                }} >
                 {options}
             </select>
             <div className={classes.cardsContainer}>
