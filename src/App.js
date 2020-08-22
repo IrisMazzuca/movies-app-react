@@ -26,6 +26,10 @@ function App() {
             <Home />
           </Route>
 
+          <Route exact path="/movies-app-react">
+            <Redirect exact from="/movies-app-react" to="/home" />
+          </Route>
+
           <Route path="/movies">
             <Movies />
           </Route>
