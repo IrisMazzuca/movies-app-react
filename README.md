@@ -1,6 +1,6 @@
 # Movies App
-[click to go to the website](https://irismazzuca.github.io/home)
-
+[click to go to the website](https://irismazzuca.github.io/movies-app-react/)
+:point_up:
 
 ***
 
