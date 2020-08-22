@@ -35,11 +35,11 @@ const CategoryPage = () => {
                         {data.results.map(movie => (
                             <Card
                                 media={media === "multi" ? movie.media_type : media}
-                                img={movie.poster_path}
-                                name={movie.original_title}
+                                img={movie.poster_path ? movie.poster_path : movie.profile_path}
+                                name={movie.original_title ? movie.original_title : movie.name }
                                 id={movie.id} />))}
                     </div>
-                    <Paginator url={`/${media}/${query}/page/`} page={page} totalPage={data.total_pages} />
+                    <Paginator url={`${media}/${query}/page/`} page={page} totalPage={data.total_pages} />
                 </div>
             )}
 

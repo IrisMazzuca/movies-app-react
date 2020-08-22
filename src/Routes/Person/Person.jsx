@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams, Link, Switch, Route } from 'react-router-dom'
+import { useParams, NavLink, Switch, Route } from 'react-router-dom'
 import PersonInfo from './PersonInfo/PersonInfo'
 import Similar from '../../Components/MediaDescription/Similar/Similar'
 import Loader from 'react-loader-spinner'
@@ -7,12 +7,12 @@ import { useSearch } from '../../Utils/hooks/useSearch'
 import classes from './Person.module.css'
 
 const Person = () => {
-    const { id } = useParams()
+    const { id, media } = useParams()
 
     const [data, isLoading, isError] = useSearch('person', id, 1);
 
     return (
-        <>
+        <div className={classes.personContainer}>
             {isError && (
                 <div className="alert-danger" role="alert">
                     Error 404: Not Found.
@@ -28,20 +28,38 @@ const Person = () => {
                 <>
 
                     <div className={classes.linkContainer}>
-                        <Link to={`/person/${id}/info`} className={classes.link}>INFORMACION</Link>
-                        <Link to={`/person/${id}/credits`} className={classes.link}>CREDITOS</Link>
+                        <NavLink
+                            activeStyle={{
+                                borderBottom: "2px solid #fff",
+                                paddingBottom: "1rem"
+                            }}
+                            to={`/person/${id}/info`}
+                            className={classes.link}
+                        >
+                            INFORMACION
+                        </NavLink>
+                        <NavLink
+                            activeStyle={{
+                                borderBottom: "2px solid #fff",
+                                paddingBottom: "1rem"
+                            }}
+                            to={`/person/${id}/credits`}
+                            className={classes.link}
+                        >
+                            CREDITOS
+                        </NavLink>
                     </div>
 
                     <Switch>
                         <Route exact path={`/person/${id}/info`}> <PersonInfo media='person' id={id} data={data} /></Route>
-                        <Route exact path={`/person/${id}/credits`}><Similar search='combined_credits' data={data} media='person' id={id} /></Route>
+                        <Route exact path={`/person/${id}/credits`}><Similar search='combined_credits' media='person' id={id} /></Route>
                     </Switch>
 
                 </>
 
             )}
 
-        </>
+        </div>
     )
 }
 

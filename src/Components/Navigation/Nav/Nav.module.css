@@ -10,18 +10,27 @@
     margin: 0 1.5rem;
 }
 
-.link:active,
-.link:focus {
-    color: rgb(33, 150, 243);
-}
-
 .svg {
-    width: 2.3rem;
+    width: 1.8rem;
     display: inline-block;
 }
 
 .svgmovie {
-    width: 2.7rem;
+    width: 2rem;
     padding-top: .2rem;
     display: inline-block;
+}
+
+
+@media (max-width: 600px) {
+    .container {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        justify-content: space-around;
+        text-align: center;
+        z-index: 99;
+        background: black;
+        padding: 5px 0px;
+    }
 }

@@ -1,9 +1,10 @@
 .figure {
     width: 30%;
+    margin-bottom: 1.5rem;
 }
 
 .img {
-    width: 500px;
+    width: 100%;
     margin-bottom: 2rem;
 }
 
@@ -20,9 +21,23 @@
 }
 
 .overview {
-    width: 500px;
-    margin: 2rem 0 3rem 0;
-    font-size: 1.1rem;
+    width: 100%;
+    margin: 1.5rem 0 3rem 0;
+    font-size: 1rem;
     text-align: justify;
     line-height: 1.5rem;
+}
+@media (max-width: 600px){
+    .figure{
+        margin: 1.5rem;
+        width: auto;
+    }
+    .img{
+        height: 200px;
+        margin-bottom: 1rem;
+        object-fit: cover;
+    }
+    .overview{
+        margin: 1rem 0 0rem 0;
+    }
 }
