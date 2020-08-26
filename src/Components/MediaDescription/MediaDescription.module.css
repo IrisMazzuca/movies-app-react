@@ -68,7 +68,7 @@
     }
 
     .link {
-        font-size: 1rem;
+        font-size: .8rem;
         text-decoration: none;
         color: rgb(168, 170, 173);
         margin: 1rem .5rem;
@@ -79,10 +79,6 @@
     .container {
         padding-bottom: 4rem;
     }
-}
-
-
-@media (max-width: 600px) {
 
     .imgContainer {
         height: 300px;
